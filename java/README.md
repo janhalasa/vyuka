@@ -1,6 +1,5 @@
 # Java
 
-Java programy sa nachádzajú v podadresári java.
 Pre preloženie programu treba v termináli napísať
 
 `javac NazovTriedy.java`
