@@ -4,6 +4,9 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Sčíta 5 čísiel načítaných z terminálu vo for cykle.
+ */
 public class SumOfNumbers {
 
     public static void main(String[] args) throws IOException {
