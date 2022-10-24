@@ -2,6 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Sčíta dve čísla načítané z terminálu.
+ */
 public class Addition {
 
     public static void main(String[] args) throws IOException {
