@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 /**
  * Vypočíta faktoriál čísla zadaného ako parameter pri spúšťaní programu.
  * Napríklad:
@@ -10,9 +12,9 @@ public class Factorial {
             System.exit(-1);
         }
         int factorialNumber = Integer.parseInt(args[0]);
-        int result = 1;
+        BigInteger result = BigInteger.ONE;
         for (int i = 1; i <= factorialNumber; i++) {
-            result = result * i;
+            result = result.multiply(BigInteger.valueOf(i));
         }
         System.out.println("" + factorialNumber + "! = " + result);
     }
