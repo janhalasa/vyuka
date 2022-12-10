@@ -8,7 +8,7 @@ import java.math.BigInteger;
 public class Factorial {
     public static void main(String[] args) {
         if (args.length < 1) {
-            System.err.println("Chyba parameter - veľkosť faktoriálu");
+            System.err.println("Chýba parameter - veľkosť faktoriálu");
             System.exit(-1);
         }
         int factorialNumber = Integer.parseInt(args[0]);
