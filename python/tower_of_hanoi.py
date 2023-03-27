@@ -3,8 +3,6 @@
 # https://en.wikipedia.org/wiki/Tower_of_Hanoi
 #
 
-from typing import List
-
 diskCount = int(input('Enter number of disks:'))
 
 tower1 = [ *range(diskCount, 0, -1) ]
@@ -13,7 +11,7 @@ tower3 = []
 
 stepCount = 0
 
-def swap_disks(firstTower: List[int], secondTower: List[int], firstName, secondName):
+def swap_disks(firstTower: list[int], secondTower: list[int], firstName, secondName):
     global stepCount
     if len(firstTower) == 0 and len(secondTower) == 0:
         return
