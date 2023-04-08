@@ -25,17 +25,14 @@ public class ShortestPathInGraph {
             while (!nodeQueue.isEmpty()) {
                 GraphNode node = nodeQueue.removeFirst();
                 System.out.print(node.id + " ");
-                node.visited = true;
+
                 for (GraphEdge edge : node.edges) {
-                    if (edge.remoteNode.visited) {
-                        continue;
-                    }
-                    if (! nodeQueue.contains(edge.remoteNode)) {
-                        nodeQueue.addLast(edge.remoteNode);
-                    }
                     int pathLength = node.shortestPathLength + edge.length;
                     if (edge.remoteNode.shortestPathLength == null || pathLength < edge.remoteNode.shortestPathLength) {
                         edge.remoteNode.setShortestStepTowardsRoot(node, pathLength);
+
+                        nodeQueue.remove(edge.remoteNode);
+                        nodeQueue.addLast(edge.remoteNode);
                     }
                 }
             }
@@ -72,9 +69,6 @@ public class ShortestPathInGraph {
         // Dĺžka nájdenej najkratšej cesty v grafe z koreňa do tohto uzlu.
         // Musí korešpondovať s atribútom shortestEdgeTowardsRoot.
         Integer shortestPathLength = null;
-
-        // Hovorí, či sme už spracovali tento uzol pri hľadaní najkratších ciest.
-        boolean visited = false;
 
         // Hrana, ktorou sa vydať v grafe, aby sme šli najkratšou cestou ku koreňu.
         GraphEdge shortestEdgeTowardsRoot = null;

@@ -18,7 +18,6 @@ class GraphNode:
 
     def __init__(self, index: int, edges: list[GraphEdge]) -> None:
         self.index = index
-        self.processed: bool = False
         self.lengthFromRoot: Optional[int] = None
         self.edgeToRoot: Optional[GraphEdge] = None
         self.edges: list[GraphEdge] = edges
@@ -71,26 +70,25 @@ class Graph:
         stack.append(self.nodes[0])
         while len(stack) > 0:
             node: GraphNode = stack.pop()
-            node.processed = True
             for edge in node.edges:
                 remoteNode = self.nodes[edge.remoteNodeIndex]
-                if not remoteNode.processed:
-                    stack.append(remoteNode)
                 
                 assert node.lengthFromRoot is not None
                 lengthUsingThisEdge = node.lengthFromRoot + edge.weight
                 if remoteNode.lengthFromRoot is None or remoteNode.lengthFromRoot > lengthUsingThisEdge:
                     remoteNode.lengthFromRoot = lengthUsingThisEdge
                     remoteNode.edgeToRoot = GraphEdge(node.index, edge.weight)
+                    if remoteNode in stack:
+                        stack.remove(remoteNode)
+                    stack.append(remoteNode)
 
     def printShortestRouteFromNode(self, nodeIndex: int):
+        print('Shortest path from ', nodeIndex, 'to 0')
         node = self.nodes[nodeIndex]
         while node.index != 0:
-            print(f"{node.index}-({node.edgeToRoot.weight})", end='-')
+            print(f"{node.index} --({node.edgeToRoot.weight})-->", end=' ')
             node = self.nodes[node.edgeToRoot.remoteNodeIndex]
         print("0")
-
-
 
 graph = Graph()
 graph.findShortestPaths()
