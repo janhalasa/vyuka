@@ -1,4 +1,4 @@
-# Výuka programovania 2022
+# Výuka programovania 2022-2023
 
 Zdrojové kódy pre výuku programovania. 
 
